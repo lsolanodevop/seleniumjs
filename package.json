@@ -1,0 +1,25 @@
+{
+  "name": "seleniumjs",
+  "version": "1.0.0",
+  "description": "Selenium Practice room",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsolanodevop/seleniumjs.git"
+  },
+  "author": "Leonardo Solano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lsolanodevop/seleniumjs/issues"
+  },
+  "homepage": "https://github.com/lsolanodevop/seleniumjs#readme",
+  "dependencies": {
+    "selenium-webdriver": "^4.3.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^103.0.0"
+  }
+}

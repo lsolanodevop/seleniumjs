@@ -4,7 +4,7 @@
   "description": "Selenium Practice room",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx mocha \"src/**/*.test.js\" --recursive --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,11 @@
     "selenium-webdriver": "^4.3.1"
   },
   "devDependencies": {
-    "chromedriver": "^103.0.0"
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/register": "^7.18.9",
+    "chai": "^4.3.6",
+    "chromedriver": "^103.0.0",
+    "mocha": "^10.0.0"
   }
 }

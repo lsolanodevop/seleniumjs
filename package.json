@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lsolanodevop/seleniumjs#readme",
   "dependencies": {
+    "lodash": "^4.17.21",
     "selenium-webdriver": "^4.3.1"
   },
   "devDependencies": {

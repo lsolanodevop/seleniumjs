@@ -4,7 +4,8 @@
   "description": "Selenium Practice room",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha \"src/**/*.test.js\" --recursive --require @babel/register"
+    "test": "npx mocha \"src/**/*.test.js\" --recursive --require @babel/register --file srv/mocha-setup.js",
+    "test-srv": "npx mocha \"srv/**/*.test.js\" --recursive --require @babel/register --file srv/mocha-setup.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,14 @@
   },
   "homepage": "https://github.com/lsolanodevop/seleniumjs#readme",
   "dependencies": {
+    "chai-exclude": "^2.1.0",
+    "express": "^4.18.1",
     "lodash": "^4.17.21",
-    "selenium-webdriver": "^4.3.1"
+    "mongodb": "^4.8.0",
+    "regenerator-runtime": "^0.13.9",
+    "selenium-webdriver": "^4.3.1",
+    "sinon": "^14.0.0",
+    "supertest": "^6.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx mocha \"src/**/*.test.js\" --recursive --require @babel/register --file srv/mocha-setup.js",
-    "test-srv": "npx mocha \"srv/**/*.test.js\" --recursive --require @babel/register --file srv/mocha-setup.js --watch"
+    "test-srv": "npx mocha \"srv/**/*.test.js\" --recursive --require @babel/register --file srv/mocha-setup.js"
   },
   "repository": {
     "type": "git",

@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 const request = supertest("http://localhost:8444");
+const key = 'Pr0l3.2022.';
 chai.use(chaiHttp);
 
 describe('POST User: /user/create', () => { //Create User
@@ -82,6 +83,7 @@ describe('POST User: /user/create', () => { //Create User
 
         await request.post('/user')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -133,6 +135,7 @@ describe('POST User: /user/create', () => { //Create User
 
         await request.post('/user')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -170,6 +173,7 @@ describe('POST User: /user/create', () => { //Create User
 
         await request.post('/user')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -220,6 +224,7 @@ describe('POST User: /user/create', () => { //Create User
 
         await request.post('/user')
             .send(sendData)
+            .set('token', key)
             .expect(401)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -252,6 +257,7 @@ describe('GET User: /user', () => { //Search
 
         await request.get('/user')
             .query(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -268,6 +274,7 @@ describe('GET User: /user', () => { //Search
 
         await request.get('/user')
             .query(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -300,6 +307,7 @@ describe(`PATCH User: /user/{id}`, () => { //Update NO ESTAN FUNCIONANDO
 
         await request.patch(`/user/${id}`)
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult)
@@ -330,6 +338,7 @@ describe(`PATCH User: /user/{id}`, () => { //Update NO ESTAN FUNCIONANDO
 
         await request.patch(`/user/${id}`)
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult)
@@ -351,6 +360,7 @@ describe(`PATCH User: /user/{id}`, () => { //Update NO ESTAN FUNCIONANDO
 
         await request.patch(`/user/${id}`)
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult)
@@ -377,6 +387,7 @@ describe('POST User: /user/{id}/change-password', () => { //Change Password
 
         await request.post(`/user/${id}/change-password`)
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -398,6 +409,7 @@ describe('POST User: /user/{id}/change-password', () => { //Change Password
 
         await request.post(`/user/${id}/change-password`)
             .send(sendData)
+            .set('token', key)
             .expect(404)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -421,6 +433,7 @@ describe('POST User: /user/{id}/change-password', () => { //Change Password
 
         await request.post(`/user/${id}/change-password`)
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -444,6 +457,7 @@ describe('POST /generate-code', () => {
 
         await request.post('/generate-code')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -465,6 +479,7 @@ describe('POST /generate-code', () => {
 
         await request.post('/generate-code')
             .send(sendData)
+            .set('token', key)
             .expect(500)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -492,6 +507,7 @@ describe('POST /verify-code', () => {
 
         await request.post('/verify-code')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -514,6 +530,7 @@ describe('POST /verify-code', () => {
 
         await request.post('/verify-code')
             .send(sendData)
+            .set('token', key)
             .expect(500)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -538,6 +555,7 @@ describe('POST /user/password', () => {
 
         await request.post('/verify-code')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -560,6 +578,7 @@ describe('POST /user/password', () => {
 
         await request.post('/verify-code')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));

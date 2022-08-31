@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 const request = supertest("http://localhost:8444");
+const key = 'Pr0l3.2022.';
 chai.use(chaiHttp);
 
 
@@ -25,6 +26,7 @@ describe('POST login: /login', () => {
 
         await request.post('/login')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -47,7 +49,8 @@ describe('POST login: /login', () => {
 
         await request.post('/login')
             .send(sendData)
-            .expect(400)
+            .set('token', key)
+            .expect(403)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
             });
@@ -68,6 +71,7 @@ describe('POST login: /login', () => {
 
         await request.post('/login')
             .send(sendData)
+            .set('token', key)
             .expect(401)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -90,6 +94,7 @@ describe('POST login: /login', () => {
 
         await request.post('/login')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -136,6 +141,7 @@ describe('POST /verify-auth-code', () => {
 
         await request.post('/verify-auth-code')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -159,6 +165,7 @@ describe('POST /verify-auth-code', () => {
 
         await request.post('/verify-auth-code')
             .send(sendData)
+            .set('token', key)
             .expect(401)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -183,6 +190,7 @@ describe('POST /generate-auth-code', () => {
 
         await request.post('/generate-auth-code')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -227,6 +235,7 @@ describe('POST /generate-auth-code', () => {
 
         await request.post('/generate-auth-code')
             .send(sendData)
+            .set('token', key)
             .expect(500)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -256,6 +265,7 @@ describe('POST /generate-new-code', () => {
 
         await request.post('/generate-new-code')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -282,6 +292,7 @@ describe('POST /generate-new-code', () => {
 
         await request.post('/generate-new-code')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -309,6 +320,7 @@ describe('POST /verify-new-code', () => {
 
         await request.post('/verify-new-code')
             .send(sendData)
+            .set('token', key)
             .expect(200)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -332,6 +344,7 @@ describe('POST /verify-new-code', () => {
 
         await request.post('/verify-new-code')
             .send(sendData)
+            .set('token', key)
             .expect(401)
             .then((res) => {
                 expect(Object.keys(res.body)).to.include.deep.members(Object.keys(expectedResult));
@@ -359,6 +372,7 @@ describe('POST /verify-new-code', () => {
 
         await request.post('/verify-new-code')
             .send(sendData)
+            .set('token', key)
             .expect(400)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
@@ -382,6 +396,7 @@ describe('POST /verify-new-code', () => {
 
         await request.post('/verify-new-code')
             .send(sendData)
+            .set('token', key)
             .expect(401)
             .then((res) => {
                 expect(res.body).to.deep.include(expectedResult);
